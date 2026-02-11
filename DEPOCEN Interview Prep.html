@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEPOCEN Researcher Position - Interview Preparation</title>
+    <style>
+        :root {
+            --color-background: #fcfcf9;
+            --color-surface: #fffffd;
+            --color-text: #134252;
+            --color-text-secondary: #626c71;
+            --color-primary: #21808d;
+            --color-primary-hover: #1d7480;
+            --color-border: rgba(94, 82, 64, 0.2);
+            --color-card-border: rgba(94, 82, 64, 0.12);
+            --color-success: #21808d;
+            --color-bg-1: rgba(59, 130, 246, 0.08);
+            --color-bg-2: rgba(245, 158, 11, 0.08);
+            --color-bg-3: rgba(34, 197, 94, 0.08);
+            --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --radius-base: 8px;
+            --radius-lg: 12px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-24: 24px;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-background: #1f2121;
+                --color-surface: #262828;
+                --color-text: #f5f5f5;
+                --color-text-secondary: rgba(167, 169, 169, 0.7);
+                --color-primary: #32b8c6;
+                --color-primary-hover: #2da6b2;
+                --color-border: rgba(119, 124, 124, 0.3);
+                --color-card-border: rgba(119, 124, 124, 0.2);
+                --color-success: #32b8c6;
+                --color-bg-1: rgba(29, 78, 216, 0.15);
+                --color-bg-2: rgba(180, 83, 9, 0.15);
+                --color-bg-3: rgba(21, 128, 61, 0.15);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            padding: var(--space-24);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: var(--space-24);
+            padding: var(--space-24);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: var(--space-8);
+            color: var(--color-text);
+        }
+
+        .subtitle {
+            color: var(--color-text-secondary);
+            font-size: 16px;
+        }
+
+        .controls {
+            display: flex;
+            gap: var(--space-12);
+            margin-bottom: var(--space-24);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            padding: var(--space-12) var(--space-16);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background: var(--color-surface);
+            color: var(--color-text);
+            font-size: 14px;
+        }
+
+        .search-box:focus {
+            outline: 2px solid var(--color-primary);
+            border-color: var(--color-primary);
+        }
+
+        .filter-group {
+            display: flex;
+            gap: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: var(--space-8) var(--space-16);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            background: var(--color-surface);
+            color: var(--color-text);
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: var(--color-bg-1);
+            border-color: var(--color-primary);
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .questions-container {
+            display: grid;
+            gap: var(--space-16);
+        }
+
+        .question-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-24);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s;
+        }
+
+        .question-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: var(--space-16);
+            margin-bottom: var(--space-16);
+            cursor: pointer;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text);
+            flex: 1;
+        }
+
+        .category-tag {
+            padding: 4px var(--space-12);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .tag-opening { background: var(--color-bg-1); color: var(--color-primary); }
+        .tag-technical { background: var(--color-bg-2); color: #a84b2f; }
+        .tag-experience { background: var(--color-bg-3); color: #21808d; }
+        .tag-situational { background: rgba(147, 51, 234, 0.08); color: #9333ea; }
+        .tag-motivation { background: rgba(239, 68, 68, 0.08); color: #dc2626; }
+        .tag-knowledge { background: rgba(249, 115, 22, 0.08); color: #f97316; }
+
+        .answer-content {
+            display: none;
+            padding-top: var(--space-16);
+            border-top: 1px solid var(--color-border);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        .answer-content.show {
+            display: block;
+        }
+
+        .answer-content p {
+            margin-bottom: var(--space-12);
+        }
+
+        .answer-content strong {
+            color: var(--color-text);
+        }
+
+        .toggle-icon {
+            color: var(--color-primary);
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .stats {
+            display: flex;
+            gap: var(--space-24);
+            margin-bottom: var(--space-24);
+            padding: var(--space-16);
+            background: var(--color-surface);
+            border-radius: var(--radius-base);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .projects-section {
+            margin-top: var(--space-24);
+            padding: var(--space-24);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .projects-section h2 {
+            font-size: 20px;
+            margin-bottom: var(--space-16);
+            color: var(--color-text);
+        }
+
+        .project-item {
+            padding: var(--space-16);
+            margin-bottom: var(--space-12);
+            background: var(--color-background);
+            border-radius: var(--radius-base);
+            border-left: 3px solid var(--color-primary);
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: var(--space-8);
+        }
+
+        .project-details {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: var(--space-24);
+            color: var(--color-text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: var(--space-16);
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: var(--space-16);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 DEPOCEN Researcher Position</h1>
+            <p class="subtitle">Interview Preparation Guide - Complete Q&amp;A Reference</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number" id="totalQuestions">19</div>
+                <div class="stat-label">Total Questions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="visibleQuestions">19</div>
+                <div class="stat-label">Showing</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Categories</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search questions or answers...">
+            <div class="filter-group">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="opening">Opening</button>
+                <button class="filter-btn" data-category="technical">Technical</button>
+                <button class="filter-btn" data-category="experience">Experience</button>
+                <button class="filter-btn" data-category="situational">Situational</button>
+                <button class="filter-btn" data-category="motivation">Motivation</button>
+                <button class="filter-btn" data-category="knowledge">Knowledge</button>
+            </div>
+        </div>
+
+        <div class="questions-container" id="questionsContainer"></div>
+
+        <div class="projects-section">
+            <h2>🔑 Key DEPOCEN Projects to Reference</h2>
+            <div class="project-item">
+                <div class="project-title">Child's Rights in Coffee Sourcing Sector (2020-2026)</div>
+                <div class="project-details">
+                    <strong>Location:</strong> Dak Lak Province (Krong Nang, Cu M'Gar, Buon Ho districts)<br>
+                    <strong>Client:</strong> Save the Children UK &amp; Lavazza Group<br>
+                    <strong>Your Connection:</strong> Your thesis on child labor in Đắk Lắk &amp; Gia Lai coffee sector - EXACT same topic and region!
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">Making Tobacco Taxation Work in Vietnam (2018-2020)</div>
+                <div class="project-details">
+                    <strong>Client:</strong> Bloomberg Philanthropies<br>
+                    <strong>Focus:</strong> Discrete choice experiments, econometric forecasting for policy reform<br>
+                    <strong>Your Connection:</strong> Demonstrates policy-relevant quantitative research you want to contribute to
+                </div>
+            </div>
+            <div class="project-item">
+                <div class="project-title">Digital Public Services Experience (2025/2026)</div>
+                <div class="project-details">
+                    <strong>Scope:</strong> All 63 provinces/cities<br>
+                    <strong>Your Connection:</strong> ITU digital governance experience + PAPI public service delivery assessment
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const questionsData = [
+            {
+                category: 'opening',
+                question: 'Tell us about yourself and why you\'re interested in this position.',
+                answer: `I'm a development researcher with a Master's from Geneva Graduate Institute and practical experience across ADB, UN agencies, and Vietnamese research organizations. My research journey began in Vietnam's Central Highlands, interviewing coffee-farming families for my thesis on child labor and vocational training interventions. That experience—sitting in small houses in Đắk Lắk and Gia Lai, hearing parents discuss impossible choices between educating children and feeding their families—fundamentally shaped my understanding that research must translate into actionable policy.
+
+I've spent the past few years building international research skills at ADB's Safeguards Office, where I developed methodologies for labor risk management, and at ITU, where I learned to communicate technical findings to policymakers. But I've always maintained roots in Vietnam through my PAPI investigator work and previous research at ISDS.
+
+What attracts me to DEPOCEN is your reputation for producing research that Vietnamese policymakers actually read and use. You bridge the gap between academic rigor and policy relevance—that's exactly the kind of research I want to contribute to.`
+            },
+            {
+                category: 'opening',
+                question: 'Walk us through your CV. What experience is most relevant to this role?',
+                answer: `I'll focus on three experiences that directly align with DEPOCEN's work:
+
+<strong>First,</strong> my Master's thesis involved independent fieldwork across Đắk Lắk and Gia Lai provinces for six months, researching child labor in Vietnam's coffee sector. I designed the methodology, developed interview protocols, collected qualitative data from farming families, and analyzed how vocational training interventions impact child labor outcomes. This demonstrates my ability to manage field research in remote areas independently.
+
+<strong>Second,</strong> at ADB's Office of Safeguards, I conducted a comprehensive study on labor data management systems. I interviewed stakeholders across departments, mapped existing platforms, identified gaps, and produced recommendations for system integration and knowledge sharing that OSFG is now considering for implementation. This taught me how to design research that serves organizational needs and manage diverse stakeholder expectations.
+
+<strong>Third,</strong> my ongoing work as a PAPI investigator since 2022 keeps me connected to Vietnam's largest governance research initiative. PAPI's focus on evidence-based policy assessment aligns closely with DEPOCEN's mission.`
+            },
+            {
+                category: 'technical',
+                question: 'Describe your experience with both qualitative and quantitative research methods. Which are you stronger in?',
+                answer: `I'm comfortable with both, though my recent work has required integrating them.
+
+<strong>For qualitative methods:</strong> My thesis involved semi-structured interviews with coffee-farming families, requiring cultural sensitivity and the ability to build trust in rural communities. At OHCHR, I analyzed individual human rights violation cases, which required careful qualitative assessment of sensitive information. I'm trained in content analysis and thematic coding.
+
+<strong>For quantitative methods:</strong> I've worked with Stata and SPSS across multiple projects. At ADB, I analyzed labor safeguard datasets across different platforms. At WageIndicator Foundation, I analyzed living wage survey data and created visualizations for diverse audiences. My undergraduate research on LGBTQ+ student mental health involved statistical analysis that won prizes at faculty and university levels.
+
+If I had to identify a strength, I'd say I'm particularly good at mixed-methods approaches—using qualitative insights to contextualize quantitative findings, which is often what policymakers need to make informed decisions.`
+            },
+            {
+                category: 'technical',
+                question: 'Have you ever designed a research proposal from scratch? Walk us through your process.',
+                answer: `I've developed research components rather than full donor proposals, so I'll be transparent that proposal development for international donors is an area where I need to grow.
+
+For my Master's thesis, I independently designed the entire research plan: I identified the research gap in vocational training effectiveness for child labor prevention, developed the conceptual framework, designed the sampling strategy across two provinces, created interview protocols, planned the fieldwork timeline, and outlined analysis methods.
+
+At ADB, I contributed to methodology development and work planning for the safeguards knowledge management study—defining research questions, identifying stakeholders for interviews, developing the interview guide, and planning the analysis framework.
+
+What I haven't done independently is develop full proposals with budgets and work plans for external donors like World Bank or UNDP. However, I've seen this process at ADB and understand the structure. I learn quickly and would welcome mentorship from DEPOCEN's senior researchers on proposal development, particularly learning how to make proposals competitive for Vietnam-focused development funders.`
+            },
+            {
+                category: 'technical',
+                question: 'What statistical software are you proficient in? Can you give an example of analysis you\'ve conducted?',
+                answer: `I'm proficient in Stata and SPSS, with working knowledge of Excel for basic data management.
+
+For example, in my undergraduate research on the relationship between sexual orientation disclosure and mental health among LGBTQ+ students, I used SPSS to run correlation analysis, regression models to control for confounding variables, and descriptive statistics to identify patterns. The research won first prize in my faculty and second prize university-wide.
+
+At WageIndicator Foundation, I used their analytical tools to analyze living wage survey datasets, identifying patterns in regional price variations and creating visualizations for different stakeholder audiences.
+
+I'm also comfortable learning new tools quickly—at ADB, I had to navigate multiple proprietary databases and data platforms that I'd never used before, and I adapted within weeks.`
+            },
+            {
+                category: 'experience',
+                question: 'Tell us about your most challenging fieldwork experience. How did you handle it?',
+                answer: `The most challenging aspect of my Central Highlands fieldwork was building trust with coffee-farming families to discuss the sensitive topic of why their children weren't in school.
+
+Initially, families were hesitant—they worried I was judging them or reporting to authorities. I realized I needed to change my approach entirely. Instead of structured interviews, I spent time in the fields with families, helped with daily tasks, and let conversations happen naturally. I worked with local commune officials who vouched for me, and I always emphasized confidentiality.
+
+One father eventually told me: 'You're the first researcher who stayed long enough to understand we're not bad parents—we're trapped by economics.' That moment taught me that the best fieldwork insights come when you genuinely listen rather than just extract data.
+
+The practical lesson: I built an extra two weeks into my timeline specifically for relationship-building before formal data collection. This upfront investment resulted in much richer, more honest data. It's an approach I'd bring to any DEPOCEN fieldwork in provinces.`
+            },
+            {
+                category: 'experience',
+                question: 'Describe a time when you had to manage multiple stakeholders with competing priorities.',
+                answer: `At ADB's Office of Safeguards, my research on labor data management involved stakeholders across multiple departments—project officers who needed practical tools, IT teams focused on system constraints, safeguards specialists concerned with compliance, and management wanting strategic recommendations.
+
+Each group had different priorities: Project officers wanted simpler processes, IT wanted to avoid creating new systems, safeguards specialists wanted more comprehensive tracking, and management wanted cost-effective solutions.
+
+My approach was to interview each stakeholder group separately first to understand their constraints and needs. Then I framed my recommendations around shared goals—'better data for better project outcomes'—rather than favoring one department. For example, instead of proposing an entirely new system (which IT opposed), I recommended integrating a labor module into existing platforms, which addressed both IT constraints and safeguards needs.
+
+The key lesson: Frame recommendations around shared institutional goals rather than individual department preferences. This is directly applicable to DEPOCEN's work with government agencies, NGOs, and international organizations who may have different priorities within the same project.`
+            },
+            {
+                category: 'experience',
+                question: 'Have you ever dealt with incomplete or poor-quality data? What did you do?',
+                answer: `Yes, during my PAPI investigator work, I've encountered situations where respondents provided incomplete information or inconsistent answers across survey sections.
+
+My approach is systematic:
+
+1. <strong>Prevention first:</strong> Clear questionnaire design and proper enumerator training minimize data quality issues upfront
+2. <strong>Documentation:</strong> When issues occur, I document them immediately with context notes
+3. <strong>Triangulation:</strong> Where possible, I cross-reference with other data sources or questions to verify information
+4. <strong>Transparency:</strong> In analysis, I'm explicit about data limitations rather than hiding them
+
+For my thesis, some farming families were hesitant to share exact income figures. Rather than pushing for numbers that might be fabricated, I used income ranges and triangulated with information about land size, coffee yield, and household expenses to estimate economic status.
+
+In reporting, I included a methodology section explaining these limitations and why the findings were still valid despite them. Policymakers respect honest assessment of data quality more than artificially clean datasets.`
+            },
+            {
+                category: 'situational',
+                question: 'A client disagrees with your research findings. How would you handle this?',
+                answer: `First, I'd seek to understand their concerns. Are they questioning the methodology, the interpretation, or do they have contextual information I'm missing? Sometimes disagreement reveals data blind spots.
+
+At ITU, I learned that policymakers sometimes resist findings because they conflict with existing policies they've invested in. The solution isn't to change findings, but to present them in a way that offers constructive paths forward.
+
+My approach would be:
+1. <strong>Listen:</strong> Understand the specific concerns without defensiveness
+2. <strong>Validate methodology:</strong> Walk them through the research design, showing it was rigorous and appropriate
+3. <strong>Explore interpretation:</strong> Sometimes findings can be framed differently without changing their accuracy
+4. <strong>Offer next steps:</strong> Suggest additional analysis or complementary research if genuine gaps exist
+
+However, I would never fabricate or distort findings to please a client. If the disagreement is about inconvenient truths, I'd stand by the methodology and data while helping them understand implications. Research integrity is non-negotiable—it's the foundation of DEPOCEN's reputation.`
+            },
+            {
+                category: 'situational',
+                question: 'You\'re midway through fieldwork and realize your sampling approach isn\'t capturing important perspectives. What do you do?',
+                answer: `This actually happened during my thesis fieldwork. I initially sampled coffee-farming families through commune officials' recommendations, but I noticed all families had similar profiles—mid-sized farms with some access to cooperatives.
+
+I realized I was missing the most vulnerable families who weren't connected to official channels. I adjusted by:
+
+1. <strong>Acknowledging the limitation:</strong> Documented the initial sampling bias in my methodology notes
+2. <strong>Adapting:</strong> Used snowball sampling, asking interviewed families about neighbors in different situations
+3. <strong>Extending timeline:</strong> Added time to reach more diverse households
+4. <strong>Triangulating:</strong> Compared findings from both sampling approaches to understand if and how perspectives differed
+
+The key is balancing methodological rigor with practical adaptation. I would immediately consult with DEPOCEN's project lead, document the issue transparently, and propose adjustments. It's better to adapt in the field than return with limited data, but these decisions should be made collaboratively and documented properly for reporting.`
+            },
+            {
+                category: 'situational',
+                question: 'How do you ensure your research remains unbiased, especially when working on politically sensitive topics?',
+                answer: `Bias can enter at every research stage, so I'm vigilant throughout:
+
+<strong>Design phase:</strong> Use neutral research questions and avoid leading questions in instruments. For my LGBTQ+ student research, I ensured question wording didn't assume negative mental health outcomes.
+
+<strong>Data collection:</strong> Train enumerators on neutrality, pilot test for unintended biases. In my OHCHR work with human rights violations, I learned the critical importance of presenting information without editorial interpretation.
+
+<strong>Analysis:</strong> Follow the data rather than confirming preconceptions. Use multiple analysts when possible, document analytical decisions transparently.
+
+<strong>Reporting:</strong> Distinguish clearly between findings, interpretation, and recommendations. Present limitations honestly.
+
+For politically sensitive work in Vietnam—like PAPI's governance assessments—I understand the importance of presenting findings factually and constructively. The goal isn't to embarrass stakeholders but to provide evidence for improvement. DEPOCEN's strong reputation suggests you navigate this balance well, and I'd learn from your institutional approach to maintaining research integrity while remaining policy-relevant.`
+            },
+            {
+                category: 'motivation',
+                question: 'You\'ve worked for major international organizations. Why choose DEPOCEN, a smaller Vietnamese research center?',
+                answer: `Working at ADB, ITU, and OHCHR taught me international research standards and gave me access to global networks. But I always knew this training was meant to serve Vietnam's development, not build a permanent international career.
+
+DEPOCEN offers something those organizations can't: direct impact on Vietnamese policy. When I was at ADB in Manila researching labor safeguards for projects across Asia, the work felt removed from actual communities. At DEPOCEN, your research on education, poverty, agriculture, and health directly informs Vietnamese government decisions.
+
+Also, DEPOCEN isn't isolated—you work with World Bank, UNDP, UNICEF, and other international partners. I'm not sacrificing international collaboration; I'm bringing that experience to a Vietnamese institution that translates it into local impact.
+
+Finally, DEPOCEN's learning environment—VEAM presentations, CASED training, working with leading Vietnamese economists—offers the professional community I want to grow within. This isn't a step down; it's a step toward the career I've been building toward since interviewing coffee farmers in Đắk Lắk.`
+            },
+            {
+                category: 'motivation',
+                question: 'What do you know about DEPOCEN\'s work? Which projects interest you most?',
+                answer: `DEPOCEN is an independent research center established in 2005, focusing on policy-relevant research across socio-economic issues in Vietnam. You're co-founders of VEAM and CASED, which demonstrates commitment to building Vietnam's research capacity, not just conducting individual studies.
+
+Your research areas include education, poverty reduction, agriculture, health, and governance—all evidence-based evaluation research that informs policy.
+
+The projects that interest me most align with my background:
+
+<strong>Child labor and education:</strong> I noticed DEPOCEN has done work on child rights in coffee-growing regions. My thesis on child labor in Vietnam's coffee sector addressed vocational training interventions, so I could contribute immediately to this area.
+
+<strong>Labor and social protection:</strong> My ADB work on labor safeguards and data management would be relevant to DEPOCEN's social policy research.
+
+<strong>Governance and public administration:</strong> My ongoing PAPI work connects directly to DEPOCEN's governance research.
+
+I'm particularly interested in research that bridges sectors—for example, how education policy intersects with agricultural economics, or how health interventions affect poverty reduction. My interdisciplinary training in international development positions me to contribute to these complex, multi-sectoral studies.`
+            },
+            {
+                category: 'motivation',
+                question: 'Where do you see yourself in 5 years?',
+                answer: `In five years, I see myself as a senior researcher at DEPOCEN or a similar Vietnamese research institution, leading complex research projects from design through dissemination.
+
+Specifically, I hope to:
+
+1. <strong>Lead proposals and projects:</strong> Independently develop and manage research for international donors and Vietnamese government agencies
+2. <strong>Publish and present:</strong> Contribute regularly to VEAM and publish in policy-relevant journals
+3. <strong>Build specialization:</strong> Become a recognized expert in education-labor linkages or child protection policy in Vietnam
+4. <strong>Mentor:</strong> Support junior researchers, sharing the international research methods I've learned
+
+What I'm not interested in: Leaving Vietnam again for international positions. My international experience is complete—now I want to apply it here.
+
+DEPOCEN's structure supports this trajectory: your mentorship from leading Vietnamese economists, opportunities to present at VEAM, access to CASED training, and support for professional development. If I demonstrate strong performance, I'd hope to take on increasing responsibility in project leadership and proposal development, areas where I've acknowledged I need to grow.`
+            },
+            {
+                category: 'motivation',
+                question: 'This role involves significant travel to remote provinces. Are you truly comfortable with this?',
+                answer: `Not only comfortable—eager. Some of my most valuable learning has happened in remote settings.
+
+My thesis fieldwork in Đắk Lắk and Gia Lai involved months in rural coffee-farming communities, often in areas with limited infrastructure. I stayed in local guesthouses, ate with families, traveled by motorbike to reach isolated farms. That's where you understand how policies actually play out in people's lives.
+
+In my CORE NGO volunteer work, I traveled to Hà Giang province—one of Vietnam's most remote areas—to teach hygiene skills to students in mountainous schools. These experiences taught me:
+
+• <strong>Practical adaptation:</strong> You work with available resources, not ideal conditions
+• <strong>Cultural sensitivity:</strong> Rural communities have different communication styles and trust-building processes
+• <strong>Physical stamina:</strong> Long days, basic accommodations, variable weather
+
+I also understand logistical planning for remote fieldwork: budget for extra time, prepare backup plans, coordinate with local authorities in advance, ensure enumerator safety.
+
+The question isn't whether I'm comfortable with remote fieldwork—it's whether I'd be satisfied with a desk-only job. The answer is no. The field is where research becomes real.`
+            },
+            {
+                category: 'knowledge',
+                question: 'What are the main challenges in conducting research in Vietnam, and how would you address them?',
+                answer: `Based on my PAPI and ISDS experience, I've observed several challenges:
+
+<strong>1. Data access and quality:</strong> Some government administrative data isn't easily accessible, and existing datasets may have gaps.
+• <em>Solution:</em> Build strong relationships with data-holding agencies, propose partnerships that benefit both parties, be transparent about data limitations in reporting.
+
+<strong>2. Respondent trust:</strong> In rural areas, people may be skeptical of researchers, especially on sensitive topics like income or government performance.
+• <em>Solution:</em> Work through trusted local intermediaries like commune officials, spend time building rapport, ensure confidentiality, explain how research will be used constructively.
+
+<strong>3. Balancing rigor with policy relevance:</strong> Research that's too academic won't influence policy; research that's too simplified loses credibility.
+• <em>Solution:</em> DEPOCEN does this well—technical appendices for methodology, executive summaries for policymakers. I've learned this approach at ITU, translating technical AI governance findings for policy audiences.
+
+<strong>4. Political sensitivity:</strong> Some findings may challenge existing policies.
+• <em>Solution:</em> Present findings constructively, frame recommendations as paths forward rather than criticism, maintain research integrity while being diplomatic.
+
+These challenges aren't unique to Vietnam, but the solutions require local knowledge and strong relationships—which is why DEPOCEN's institutional reputation is so valuable.`
+            },
+            {
+                category: 'knowledge',
+                question: 'How do you stay current with research methods and development trends?',
+                answer: `I use several strategies:
+
+<strong>Academic engagement:</strong> I follow key journals relevant to development economics and social policy. My Geneva training emphasized staying connected to academic literature even in applied research.
+
+<strong>Conference participation:</strong> I've presented at international conferences during undergraduate and graduate studies. I'm eager to present at VEAM as a DEPOCEN researcher.
+
+<strong>Network learning:</strong> Through VSOD (Vietnam School of Development), I connected with Vietnamese researchers working on sustainable development. These networks provide informal learning about emerging methods and trends.
+
+<strong>Professional development:</strong> I actively seek training opportunities. At ADB, I participated in internal workshops on impact evaluation methods. DEPOCEN's access to CASED training is actually one of the attractions of this position.
+
+<strong>Practical application:</strong> The best learning happens through doing. At ITU, I had to quickly learn about AI governance research methods for digital inclusion studies—a completely new area for me. I read key papers, consulted with experts, and adapted existing methods to new contexts.
+
+I also believe in peer learning—junior researchers often bring fresh methodological perspectives. I'd both contribute to and learn from DEPOCEN's research team.`
+            },
+            {
+                category: 'motivation',
+                question: 'What questions do you have for us?',
+                answer: `I have several questions:
+
+<strong>1. About current projects:</strong> What are DEPOCEN's priority research areas for 2026? Are there ongoing projects where you need additional researcher capacity immediately?
+
+<strong>2. About team structure:</strong> How is research work typically divided? Do researchers specialize in sectors, or does everyone work across different topics?
+
+<strong>3. About career development:</strong> How does DEPOCEN support researchers in developing proposal writing skills and presenting at VEAM? Is there mentorship from senior researchers?
+
+<strong>4. About client relationships:</strong> What's the typical balance between consultancy projects for specific clients versus independent research initiated by DEPOCEN?
+
+<strong>5. About work environment:</strong> What does a typical week look like for a researcher? How much time is spent in the office versus field versus working from home?
+
+<strong>6. About this position specifically:</strong> Is this a new position or replacing someone? If replacing, could you share why the previous researcher left?
+
+<strong>7. About next steps:</strong> What's your timeline for decision-making, and what are the next stages in your hiring process?`
+            },
+            {
+                category: 'motivation',
+                question: 'Is there anything else we should know about you?',
+                answer: `Three things I want to emphasize:
+
+<strong>First,</strong> I'm genuinely committed to Vietnam. My international experience wasn't about building a global career—it was about bringing international research standards home. The fact that I maintained PAPI investigator work while in Geneva demonstrates this commitment.
+
+<strong>Second,</strong> I'm a quick learner who takes feedback well. I've acknowledged that proposal development is an area where I need growth. I'm eager to learn from DEPOCEN's experienced team, and I've consistently proven I can master new skills quickly—whether it was adapting to ADB's systems, learning AI governance research at ITU, or conducting sensitive human rights research at OHCHR.
+
+<strong>Third,</strong> I bring both technical skills and cultural competence. I understand international research standards, but I also know how to navigate Vietnamese community dynamics, work with local authorities, and present findings in culturally appropriate ways. This combination is exactly what DEPOCEN needs for research that's globally rigorous but locally relevant.
+
+I'm genuinely excited about this opportunity. DEPOCEN is doing exactly the kind of work I've been training for.`
+            }
+        ];
+
+        const container = document.getElementById('questionsContainer');
+        const searchBox = document.getElementById('searchBox');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const visibleQuestionsEl = document.getElementById('visibleQuestions');
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function renderQuestions() {
+            container.innerHTML = '';
+            
+            const filtered = questionsData.filter(q => {
+                const matchesFilter = currentFilter === 'all' || q.category === currentFilter;
+                const matchesSearch = currentSearch === '' || 
+                    q.question.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    q.answer.toLowerCase().includes(currentSearch.toLowerCase());
+                return matchesFilter && matchesSearch;
+            });
+
+            visibleQuestionsEl.textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                container.innerHTML = '<div class="no-results">No questions match your filters. Try adjusting your search or category.</div>';
+                return;
+            }
+
+            filtered.forEach((q, index) => {
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                
+                const categoryClass = `tag-${q.category}`;
+                const categoryLabel = q.category.charAt(0).toUpperCase() + q.category.slice(1);
+                
+                card.innerHTML = `
+                    <div class="question-header" onclick="toggleAnswer(${index})">
+                        <div class="question-text">${q.question}</div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <span class="category-tag ${categoryClass}">${categoryLabel}</span>
+                            <span class="toggle-icon" id="icon-${index}">▼</span>
+                        </div>
+                    </div>
+                    <div class="answer-content" id="answer-${index}">
+                        ${q.answer.split('\n\n').map(p => `<p>${p}</p>`).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        window.toggleAnswer = function(index) {
+            const answer = document.getElementById(`answer-${index}`);
+            const icon = document.getElementById(`icon-${index}`);
+            answer.classList.toggle('show');
+            icon.classList.toggle('rotated');
+        };
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.category;
+                renderQuestions();
+            });
+        });
+
+        searchBox.addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            renderQuestions();
+        });
+
+        renderQuestions();
+    </script>
+</body>
+</html>
+
